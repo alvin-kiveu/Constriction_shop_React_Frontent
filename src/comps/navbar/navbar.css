@@ -1,0 +1,65 @@
+/* Navbar.css */
+
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-img {
+  width: 150px;
+  margin-right: 100px;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 15px; /* Adjusted space between menu items */
+  list-style: none; /* Remove default list styles */
+  display: inline-block; /* Display items horizontally */
+}
+
+.navbar-nav  {
+  color: #333;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none; 
+  gap: 40px;
+}
+
+.cart-count {
+  color: #fff; /* Set text color to white */
+  background-color: #e3911f; /* Set background color to match your theme */
+  margin-right: 5px; /* Adjust margin for spacing */
+}
+
+.navbar-nav .nav-item.active a {
+  color: #E8AE5C; /* Your theme color for the active item */
+}
+
+.navbar-toggler-icon {
+  background-color: #333;
+}
+
+.nav-login-cart {
+  margin-right: 95px;
+}
+
+.cart-icon {
+  font-size: 48px;
+  color: #e3911f;
+}
+
+.cart-icon:hover {
+  font-size: 48px; 
+  color: #E8AE5C; 
+}
+
+.nav-login-cart button {
+  border-color: #e3911f; 
+  color: white;
+  font-size: 16px; 
+  background-color: #E8AE5C;
+}
+
+.nav-login-cart button:hover {
+  background-color: #E8AE5C; 
+  color: #fff;
+}
