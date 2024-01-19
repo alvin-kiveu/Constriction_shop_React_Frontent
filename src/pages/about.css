@@ -1,0 +1,44 @@
+
+.about-us {
+    text-align: center;
+  }
+  
+  .display-4,
+  h4 {
+    font-size: 3rem;
+  }
+  
+  .about-us-content,
+  .mission-section,
+  .commitment-section {
+    margin-top: 2rem;
+  }
+  
+  .about-us-wrench-icon {
+    color: #e3911f;
+  }
+  
+  .lead {
+    font-size: 1.6rem;
+  }
+  
+  .mission-section,
+  .commitment-section {
+    background-color: #f8f9fa; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+  }
+
+  .mission-section p,
+.commitment-section p {
+  font-size: 1.3rem; /* Increased font size for mission and commitment paragraphs */
+}
+  
+  b {
+    color: #e3911f; 
+    font-weight: bold;
+
+  }
+  

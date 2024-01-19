@@ -1,4 +1,4 @@
-import React from 'react'
+import Hero from "../comps/Hero/Hero"
 
 const Shop = () => {
   return (

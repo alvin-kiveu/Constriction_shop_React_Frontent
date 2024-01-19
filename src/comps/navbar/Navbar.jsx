@@ -17,7 +17,7 @@ const Navbar = () => {
         color: 'inherit', // Inherit color from the parent
       };
   return (
-    <div className='navbar navbar-expand-lg navbar-light bg-light'>
+    <div className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
       <div className='container'>
         <div className='logo navbar-brand'>
           <img src={jengaLogo} alt="logo" className="logo-img" />

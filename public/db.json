@@ -1,0 +1,135 @@
+{
+    "hardwareProducts":[
+    {
+      "id": 1,
+      "title": "Steel Mesh Grill",
+      "description": "High-quality grey steel mesh grille for construction.",
+      "price": 49.99,
+      "image": "https://images.unsplash.com/photo-1518096495978-56aa98bcd990?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "id": 2,
+      "title": "Rustic Metal Pipes",
+      "description": "Brown and black metal pipes for various applications.",
+      "price": 29.99,
+      "image": "https://images.unsplash.com/photo-1580810734898-5e1753f23337?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29uc3RydWN0aW9uJTIwbWF0ZXJpYWxzfGVufDB8fDB8fHww"
+    },
+    {
+      "id": 3,
+      "title": "Classic Red Bricks",
+      "description": "Traditional red bricks for timeless construction.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1629608564457-5d74829a9e14?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29uc3RydWN0aW9uJTIwbWF0ZXJpYWxzfGVufDB8fDB8fHww"
+    },
+    {
+      "id": 4,
+      "title": "Natural Wood Logs",
+      "description": "Black and brown wood logs for rustic charm.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1592484251594-e0b5037fa3c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "id": 5,
+      "title": "Grey Metal Eyelet Lot",
+      "description": "Elegant grey metal eyelets for various applications.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1549269889-d327b3a6e05a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "id": 6,
+      "title": "Cordless Drill",
+      "description": "Powerful Makita cordless drill for your construction needs.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1518709414768-a88981a4515d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29uc3RydWN0aW9uJTIwZXF1aXBtZW50cyUyMGRyaWxsfGVufDB8fDB8fHww"
+    },
+    {
+      "id": 7,
+      "title": "Brown Roof Tiles",
+      "description": "Classic brown roof tiles for durable roofing solutions.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1624167480763-c5bcdeafe6c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "id": 8,
+      "title": "Metal Frames",
+      "description": "Brown and black metal frames for structural support.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1490253599483-a908627eb692?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "id": 9,
+      "title": "Green Ryobi Hand Grill",
+      "description": "Durable green Ryobi hand grill for various applications.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1458829549177-e9a8f3db5b14?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+      "id": 10,
+      "title": "Yellow Construction Helmet",
+      "description": "Bright yellow construction helmet for safety on the site.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1509453721491-c3af5961df76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTU0fHxjb25zdHJ1Y3Rpb24lMjBtYXRlcmlhbHN8ZW58MHx8MHx8fDA%3D"
+    }
+],
+
+"moreProducts": [
+    {
+      "id": 11,
+      "title": "Power drill",
+      "description": "Red cordless powerdrill",
+      "price": 49.99,
+      "image": "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNvbnN0cnVjdGlvbiUyMGVxdWlwbWVudHN8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "id": 12,
+      "title": "Helmet",
+      "description": "Red helmet",
+      "price": 29.99,
+      "image": "https://images.unsplash.com/photo-1567954970774-58d6aa6c50dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGNvbnN0cnVjdGlvbiUyMGVxdWlwbWVudHN8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "id": 13,
+      "title": "Stone wall",
+      "description": "Brown and grey.",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1627813030092-7976bd9e318c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGJ1aWxkaW5nJTIwbWF0ZXJpYWx8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "id": 14,
+      "title": "Handyman tools",
+      "description": "Golden handyman",
+      "price": 39.99,
+      "image": "https://img.freepik.com/free-photo/tools-table_144627-8672.jpg?size=626&ext=jpg"
+    },
+    {
+        "id": 15,
+        "title": "Yellow Construction Helmet",
+        "description": "Bright yellow construction helmet for safety on the site.",
+        "price": 39.99,
+        "image": "https://images.unsplash.com/photo-1509453721491-c3af5961df76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTU0fHxjb25zdHJ1Y3Rpb24lMjBtYXRlcmlhbHN8ZW58MHx8MHx8fDA%3D"
+      },
+      {
+        "id": 16,
+        "title": "Steel Mesh Grill",
+        "description": "High-quality grey steel mesh grille for construction.",
+        "price": 49.99,
+        "image": "https://images.unsplash.com/photo-1518096495978-56aa98bcd990?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D"
+      },
+      {
+        "id": 17,
+        "title": "Rustic Metal Pipes",
+        "description": "Brown and black metal pipes for various applications.",
+        "price": 29.99,
+        "image": "https://images.unsplash.com/photo-1580810734898-5e1753f23337?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29uc3RydWN0aW9uJTIwbWF0ZXJpYWxzfGVufDB8fDB8fHww"
+      },
+      {
+        "id": 18,
+        "title": "Classic Red Bricks",
+        "description": "Traditional red bricks for timeless construction.",
+        "price": 39.99,
+        "image": "https://images.unsplash.com/photo-1629608564457-5d74829a9e14?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29uc3RydWN0aW9uJTIwbWF0ZXJpYWxzfGVufDB8fDB8fHww"
+      }
+  ]
+}
+  
+  
