@@ -6,7 +6,8 @@
       "description": "High-quality grey steel mesh grille for construction.",
       "price": 49.99,
       "image": "https://images.unsplash.com/photo-1518096495978-56aa98bcd990?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D",
-      "category": "Mesh Grills"
+      "category": "Mesh Grills",
+      "onOffer": false
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "description": "Brown and black metal pipes for various applications.",
       "price": 29.99,
       "image": "https://images.unsplash.com/photo-1580810734898-5e1753f23337?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29uc3RydWN0aW9uJTIwbWF0ZXJpYWxzfGVufDB8fDB8fHww",
-      "category": "Metal Pipes"
+      "category": "Metal Pipes",
+      "onOffer": true
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "description": "Traditional red bricks for timeless construction.",
       "price": 39.99,
       "image": "https://images.unsplash.com/photo-1629608564457-5d74829a9e14?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29uc3RydWN0aW9uJTIwbWF0ZXJpYWxzfGVufDB8fDB8fHww",
-      "category": "Red Bricks"
+      "category": "Red Bricks",
+      "onOffer": true
     },
     {
       "id": 4,
@@ -30,7 +33,8 @@
       "description": "Black and brown wood logs for rustic charm.",
       "price": 39.99,
       "image": "https://images.unsplash.com/photo-1592484251594-e0b5037fa3c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D",
-      "category": "Wood Logs"
+      "category": "Wood Logs",
+      "onOffer": true
     },
     {
       "id": 5,
@@ -38,7 +42,8 @@
       "description": "Elegant grey metal eyelets for various applications.",
       "price": 39.99,
       "image": "https://images.unsplash.com/photo-1549269889-d327b3a6e05a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D",
-      "category": "Metal Eyelets"
+      "category": "Metal Eyelets",
+      "onOffer": true
     },
     {
       "id": 6,
@@ -46,7 +51,8 @@
       "description": "Powerful Makita cordless drill for your construction needs.",
       "price": 39.99,
       "image": "https://images.unsplash.com/photo-1518709414768-a88981a4515d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29uc3RydWN0aW9uJTIwZXF1aXBtZW50cyUyMGRyaWxsfGVufDB8fDB8fHww",
-      "category": "Power Tools"
+      "category": "Power Tools",
+      "onOffer": true
     },
     {
       "id": 7,
@@ -54,7 +60,8 @@
       "description": "Classic brown roof tiles for durable roofing solutions.",
       "price": 39.99,
       "image": "https://images.unsplash.com/photo-1624167480763-c5bcdeafe6c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D",
-      "category": "Roof Tiles"
+      "category": "Roof Tiles",
+      "onOffer": true
     },
     {
       "id": 8,
@@ -62,7 +69,8 @@
       "description": "Brown and black metal frames for structural support.",
       "price": 39.99,
       "image": "https://images.unsplash.com/photo-1490253599483-a908627eb692?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D",
-      "category": "Metal Frames"
+      "category": "Metal Frames",
+      "onOffer": false
     },
     {
       "id": 9,
@@ -70,7 +78,8 @@
       "description": "Durable green Ryobi hand grill for various applications.",
       "price": 39.99,
       "image": "https://images.unsplash.com/photo-1458829549177-e9a8f3db5b14?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGNvbnN0cnVjdGlvbiUyMG1hdGVyaWFsc3xlbnwwfHwwfHx8MA%3D%3D",
-      "category": "Hand Grills"
+      "category": "Hand Grills",
+      "onOffer": false
     },
     {
       "id": 10,
@@ -78,7 +87,8 @@
       "description": "Bright yellow construction helmet for safety on the site.",
       "price": 39.99,
       "image": "https://images.unsplash.com/photo-1509453721491-c3af5961df76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTU0fHxjb25zdHJ1Y3Rpb24lMjBtYXRlcmlhbHN8ZW58MHx8MHx8fDA%3D",
-      "category": "Safety Gear"
+      "category": "Safety Gear",
+      "onOffer": false
     }
   ],
 
