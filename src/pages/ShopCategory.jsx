@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import { FaScrewdriverWrench } from 'react-icons/fa6';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 import './shopcategory.css';
 
 const ShopCategory = () => {
@@ -32,6 +33,18 @@ const ShopCategory = () => {
 
   const uniqueCategories = Array.from(new Set(moreProducts.map((product) => product.category)));
 
+  const buttonStyle = {
+    backgroundColor: '#e8ae5c', 
+    color: 'white',
+    padding: '10px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: '16px',
+    margin: '4px 2px',
+    cursor: 'pointer',
+    borderRadius: '4px',
+  };
   return (
     <div className="hero container mt-5">
       <div className="row justify-content-center align-items-center text-center">
@@ -70,7 +83,10 @@ const ShopCategory = () => {
                         <div className="card-body left-align">
                           <h5 className="card-title">{product.title}</h5>
                           <p className="card-text">{product.description}</p>
-                          <p className="card-text">${product.price.toFixed(2)}</p>
+                          <p className="card-text">Ksh {product.price.toFixed(2)}</p>
+                          <Link to="/checkout">
+                            <button className="btn btn-primary" style={buttonStyle}>Buy Now</button>
+                          </Link>
                         </div>
                       </div>
                     </div>

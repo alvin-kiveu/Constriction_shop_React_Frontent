@@ -70,7 +70,7 @@ const Product = () => {
                   <h5 className="card-title">{product.title}</h5>
                   <p className="card-text">{product.description}</p>
                 </div>
-                  <p className="card-text" style={priceStyle}>${product.price.toFixed(2)}</p>
+                  <p className="card-text" style={priceStyle}>Ksh {product.price.toFixed(2)}</p>
                   <Link to="/checkout">
                   <button className="btn btn-primary" style={buttonStyle}>Buy Now</button>
                 </Link>

@@ -5,12 +5,27 @@ import './hero.css';
 import { FaScrewdriverWrench } from 'react-icons/fa6';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const Hero = () => {
   const [hardwareProducts, setHardwareProducts] = useState([]);
   const [moreProducts, setMoreProducts] = useState([]);
 
+  const buttonStyle = {
+    backgroundColor: '#e8ae5c', 
+    color: 'white',
+    padding: '10px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: '16px',
+    margin: '4px 2px',
+    cursor: 'pointer',
+    borderRadius: '4px',
+  };
 
-
+  const priceStyle = {
+    color: '#e8ae5c',
+  };
   useEffect(() => {
     const fetchData = async () => {
         try {
@@ -68,7 +83,7 @@ const Hero = () => {
                   <img src={product.image} alt={product.title} className="img-fluid rounded" style={{ height: '200px' }} />
                   <h5>{product.title}</h5>
                   <p>{product.description}</p>
-                  <p>${product.price.toFixed(2)}</p>
+                  <p style={priceStyle}>Ksh {product.price.toFixed(2)}</p>
                 </SplideSlide>
               ))}
             </Splide>
@@ -82,7 +97,7 @@ const Hero = () => {
                 <img src={product.image} alt={product.title} className="img-fluid rounded" style={{ height: '200px' }} />
                 <h5>{product.title}</h5>
                 <p>{product.description}</p>
-                <p>${product.price.toFixed(2)}</p>
+                <p style={priceStyle}>Ksh {product.price.toFixed(2)}</p>
             </div>
             ))}
         </div>
