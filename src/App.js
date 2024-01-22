@@ -9,6 +9,7 @@ import Cart from './pages/Cart';
 import About from './pages/About';
 import Checkout from './pages/Checkout';
 import Footer from './comps/footer/Footer';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/product' element={<Product/>}/>
         <Route path=':productId' element={<Product/>}/>
         <Route path='/cart' element={<Cart/>}/>
+         <Route path='/signup' element={<Login />} />
         <Route path='/login' element={<LoginSignup/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
