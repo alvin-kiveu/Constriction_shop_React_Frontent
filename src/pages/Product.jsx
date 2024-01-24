@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Product = () => {
+const Product = ({ onAddToCart }) => {
   const [onOfferProducts, setOnOfferProducts] = useState([]);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ const Product = () => {
   };
 
   const buttonStyle = {
-    backgroundColor: '#e8ae5c', 
+    backgroundColor: '#e8ae5c',
     color: 'white',
     padding: '10px',
     textAlign: 'center',
@@ -55,13 +56,30 @@ const Product = () => {
     borderRadius: '4px',
   };
 
-
+  const notify = (productName) => {
+    toast.success(`${productName} added to cart!`, {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      style: {
+        fontSize: '16px',
+        borderRadius: '4px',
+        backgroundColor: '#dcae6e', 
+        color: '#fff',
+        padding: '10px',
+      },
+    });
+  };
 
   return (
     <div className="container mt-5">
       <h2 className="mb-4">On Offer Products</h2>
+      <ToastContainer  bodyClassName="custom-toast-body" />
       <div className="row">
-        {onOfferProducts.map(product => (
+        {onOfferProducts.map((product) => (
           <div key={product.id} className="col-lg-4 col-md-6 mb-4">
             <div className="card" style={cardStyle}>
               <img src={product.image} alt={product.title} className="card-img-top" />
@@ -70,10 +88,20 @@ const Product = () => {
                   <h5 className="card-title">{product.title}</h5>
                   <p className="card-text">{product.description}</p>
                 </div>
-                  <p className="card-text" style={priceStyle}>Ksh {product.price.toFixed(2)}</p>
-                  <Link to="/checkout">
-                  <button className="btn btn-primary" style={buttonStyle}>Buy Now</button>
-                </Link>
+                <p className="card-text" style={priceStyle}>
+                  Ksh {product.price.toFixed(2)}
+                </p>
+
+                <button
+                  className="btn btn-primary"
+                  style={buttonStyle}
+                  onClick={() => {
+                    onAddToCart(product);
+                    notify(product.title);
+                  }}
+                >
+                  Add to cart
+                </button>
               </div>
             </div>
           </div>
@@ -84,6 +112,7 @@ const Product = () => {
 };
 
 export default Product;
+
 
 
 

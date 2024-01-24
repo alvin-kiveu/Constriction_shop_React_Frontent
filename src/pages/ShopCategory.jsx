@@ -4,8 +4,10 @@ import { FaScrewdriverWrench } from 'react-icons/fa6';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import './shopcategory.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ShopCategory = () => {
+const ShopCategory = ({onAddToCart, cartItems}) => {
   const [hardwareProducts, setHardwareProducts] = useState([]);
   const [moreProducts, setMoreProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -31,6 +33,8 @@ const ShopCategory = () => {
     setSelectedCategory(category);
   };
 
+ 
+
   const uniqueCategories = Array.from(new Set(moreProducts.map((product) => product.category)));
 
   const buttonStyle = {
@@ -45,8 +49,50 @@ const ShopCategory = () => {
     cursor: 'pointer',
     borderRadius: '4px',
   };
+
+  const notify = (productName) => {
+    toast.success(`${productName} added to cart!`, {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      style: {
+        fontSize: '16px',
+        borderRadius: '4px',
+        backgroundColor: '#dcae6e', 
+        color: '#fff',
+        padding: '10px',
+      },
+    });
+  };
+
+  const isProductInCart = (productId) => {
+    return cartItems.some((item) => item.id === productId);
+  };
+
+  const addToCart = (product) => {
+    const productId = product.id;
+    if (isProductInCart(productId)) {
+      // Product already in cart, update quantity
+      const updatedCart = cartItems.map((item) =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      onAddToCart(updatedCart);
+    } else {
+      // Product not in cart, add to cart with quantity 1
+      const updatedCart = [...cartItems, { ...product, quantity: 1 }];
+      onAddToCart(updatedCart);
+    }
+
+    notify(product.title);
+  };
+
   return (
+    
     <div className="hero container mt-5">
+      <ToastContainer  bodyClassName="custom-toast-body" />
       <div className="row justify-content-center align-items-center text-center">
         <div className="col-lg-12">
           <div className="hero-wrench-icon">
@@ -84,10 +130,16 @@ const ShopCategory = () => {
                           <h5 className="card-title">{product.title}</h5>
                           <p className="card-text">{product.description}</p>
                           <p className="card-text">Ksh {product.price.toFixed(2)}</p>
-                          <Link to="/checkout">
-                            <button className="btn btn-primary" style={buttonStyle}>Buy Now</button>
-                          </Link>
-                        </div>
+                          <button
+                  className="btn btn-primary"
+                  style={buttonStyle}
+                  onClick={() => {
+                    onAddToCart(product);
+                    notify(product.title);
+                  }}
+                >
+                  Add to cart
+                </button>                        </div>
                       </div>
                     </div>
                   ))}

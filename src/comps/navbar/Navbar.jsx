@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsCart4 } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({cartItemCount}) => {
     const [menu, setMenu] = useState('shop')
 
     const activeItemStyle = {
@@ -13,8 +13,8 @@ const Navbar = () => {
         borderBottom: '2px solid #E8AE5C',
       };
       const linkStyle = {
-        textDecoration: 'none', // Remove underline
-        color: 'inherit', // Inherit color from the parent
+        textDecoration: 'none', 
+        color: 'inherit', 
       };
   return (
     <div className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
@@ -50,7 +50,7 @@ const Navbar = () => {
         
         <div className="nav-cart">
           <Link to='cart'><BsCart4 className="cart-icon"  /></Link>
-          <span className="badge badge-pill badge-warning cart-count">0</span>
+          <span className="badge badge-pill badge-warning cart-count">{cartItemCount}</span>
 
           
         </div>
