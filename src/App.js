@@ -37,7 +37,7 @@ function App() {
         <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>
          <Route path='/signup' element={<Login />} />
         <Route path='/login' element={<LoginSignup/>}/>
-        <Route path='/product/:id' element={<ProductDetails/>}/>
+        <Route path='/product/:id' element={<ProductDetails onAddToCart={handleAddToCart}/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
       <Footer/>

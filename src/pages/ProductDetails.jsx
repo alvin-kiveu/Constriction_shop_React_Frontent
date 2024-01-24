@@ -1,29 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ProductDetails = () => {
+const ProductDetails = ({ onAddToCart }) => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
-  const priceStyle = {
-    color: '#e8ae5c',
-  };
 
-  const buttonStyle = {
-    backgroundColor: '#e8ae5c', 
-    color: 'white',
-    padding: '10px',
-    textAlign: 'center',
-    textDecoration: 'none',
-    display: 'inline-block',
-    fontSize: '16px',
-    margin: '4px 2px',
-    cursor: 'pointer',
-    borderRadius: '4px',
-  };
 
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -47,16 +34,52 @@ const ProductDetails = () => {
       }
     };
   
-    fetchData(); // Make sure to call the fetchData function
+    fetchData(); 
   
-    // Include the ID parameter in the dependency array if it's used inside the useEffect
+    
   }, [id]);
   if (!product) {
-    return <div>Loading...</div>; // You can replace this with a loading spinner or any other loading indication
+    return <div>Loading...</div>; 
   }
+
+  const buttonStyle = {
+    backgroundColor: '#e8ae5c',
+    color: 'white',
+    padding: '10px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: '16px',
+    margin: '4px 2px',
+    cursor: 'pointer',
+    borderRadius: '4px',
+  };
+
+  const notify = (productName) => {
+    toast.success(`${productName} added to cart!`, {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      style: {
+        fontSize: '16px',
+        borderRadius: '4px',
+        backgroundColor: '#dcae6e', 
+        color: '#fff',
+        padding: '10px',
+      },
+    });
+  };
+
+  const priceStyle = {
+    color: '#e8ae5c',
+  };
 
   return (
     <div className="container mt-5">
+            <ToastContainer bodyClassName="custom-toast-body" />
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card">
@@ -70,9 +93,18 @@ const ProductDetails = () => {
               <h5 className="card-title">{product.title}</h5>
               <p className="card-text">{product.description}</p>
               <p style={{ ...priceStyle }}>Ksh {product.price.toFixed(2)}</p>
-                <Link to="/checkout">
-                 <button className="btn btn-primary" style={buttonStyle}>Add to cart</button>
-                </Link>
+                
+                        <button
+                            className="btn btn-primary"
+                            style={buttonStyle}
+                            onClick={() => {
+                              onAddToCart(product);
+                              notify(product.title);
+                            }}
+                          >
+                            Add to cart
+                          </button>
+               
             </div>
           </div>
         </div>

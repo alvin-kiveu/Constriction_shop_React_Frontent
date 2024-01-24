@@ -103,6 +103,7 @@ const Hero = () => {
                         >
                           Ksh {product.price.toFixed(2)}
                         </p>
+                        
                       </div>
                     </div>
                   </SplideSlide>

@@ -19,9 +19,11 @@ const Navbar = ({cartItemCount}) => {
   return (
     <div className='navbar navbar-expand-lg navbar-light bg-light fixed-top'>
       <div className='container'>
+        <Link to={'/'}>
         <div className='logo navbar-brand'>
           <img src={jengaLogo} alt="logo" className="logo-img" />
         </div>
+        </Link>
 
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
