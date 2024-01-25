@@ -139,7 +139,8 @@ const ShopCategory = ({onAddToCart, cartItems}) => {
                   }}
                 >
                   Add to cart
-                </button>                        </div>
+                </button>                       
+                 </div>
                       </div>
                     </div>
                   ))}
