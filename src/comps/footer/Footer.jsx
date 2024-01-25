@@ -12,7 +12,7 @@ const Footer = () => {
         padding: '10px 0',
         borderTop: '1px solid #e9ecef',
         boxShadow: '0 3px 2px rgba(0, 0, 0, 0.1)',
-        marginTop: '350px',
+        marginTop: '610px',
       }}
     >
       <div className="container">
