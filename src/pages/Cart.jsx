@@ -51,7 +51,10 @@ const Cart = ({ cartItems, setCartItems }) => {
   };
 
   const calculateTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cartItems.reduce(
+      (total, item) => total + (typeof item.price === 'string' ? parseFloat(item.price) : item.price) * item.quantity,
+      0
+    );
   };
 
   return (
@@ -91,8 +94,8 @@ const Cart = ({ cartItems, setCartItems }) => {
                     </button>
                   </div>
                 </td>
-                <td>Kshs {item.price ? item.price.toFixed(2) : 'N/A'}</td>
-                <td>Kshs {item.price ? (item.price * item.quantity).toFixed(2) : 'N/A'}</td>
+                <td>Kshs {item.price ? (typeof item.price === 'string' ? parseFloat(item.price).toFixed(2) : item.price.toFixed(2)) : 'N/A'}</td>
+                <td>Kshs {item.price ? (typeof item.price === 'string' ? parseFloat(item.price).toFixed(2) * item.quantity : item.price * item.quantity).toFixed(2) : 'N/A'}</td>
                 <td>
                   <button
                     className="btn btn-danger btn-sm"
@@ -125,4 +128,6 @@ const Cart = ({ cartItems, setCartItems }) => {
 };
 
 export default Cart;
+
+
 
