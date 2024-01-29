@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import './shopcategory.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const ShopCategory = ({onAddToCart, cartItems}) => {
   const [hardwareProducts, setHardwareProducts] = useState([]);
@@ -16,8 +17,8 @@ const ShopCategory = ({onAddToCart, cartItems}) => {
     const fetchData = async () => {
       try {
         // Fetch moreProducts
-        const moreResponse = await fetch('http://localhost:3001/moreProducts');
-        const moreData = await moreResponse.json();
+        const moreResponse = await axios.get('http://127.0.0.1:8000/api/items/');
+        const moreData = await moreResponse.data;
 
         // Update state
         setMoreProducts(moreData);
@@ -129,7 +130,9 @@ const ShopCategory = ({onAddToCart, cartItems}) => {
                         <div className="card-body left-align">
                           <h5 className="card-title">{product.title}</h5>
                           <p className="card-text">{product.description}</p>
-                          <p className="card-text">Ksh {product.price.toFixed(2)}</p>
+                          <p className="card-text">
+                           Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
+                          </p>
                           <button
                   className="btn btn-primary"
                   style={buttonStyle}

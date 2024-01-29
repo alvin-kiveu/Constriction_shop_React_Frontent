@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const Product = ({ onAddToCart }) => {
   const [onOfferProducts, setOnOfferProducts] = useState([]);
@@ -10,11 +11,11 @@ const Product = ({ onAddToCart }) => {
     const fetchProducts = async () => {
       try {
         // Fetch hardware products
-        const response = await fetch('http://localhost:3001/hardwareProducts');
-        const products = await response.json();
+        const response = await axios.get('http://127.0.0.1:8000/api/items/');
+        const products = await response.data;
 
         // Filter products that are on offer
-        const onOffer = products.filter(product => product.onOffer);
+        const onOffer = products.filter(product => product.on_offer);
 
         // Set state
         setOnOfferProducts(onOffer);
@@ -89,7 +90,7 @@ const Product = ({ onAddToCart }) => {
                   <p className="card-text">{product.description}</p>
                 </div>
                 <p className="card-text" style={priceStyle}>
-                  Ksh {product.price.toFixed(2)}
+                Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
                 </p>
 
                 <button

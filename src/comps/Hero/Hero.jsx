@@ -4,6 +4,8 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaScrewdriverWrench } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 const Hero = () => {
   const [hardwareProducts, setHardwareProducts] = useState([]);
@@ -17,12 +19,18 @@ const Hero = () => {
     const fetchData = async () => {
       try {
         // Fetch hardwareProducts
-        const hardwareResponse = await fetch('http://localhost:3001/hardwareProducts');
-        const hardwareData = await hardwareResponse.json();
+        const hardwareResponse = await axios.get('http://127.0.0.1:8000/api/items/');
+        const hardwareData = await hardwareResponse.data;
+
+        console.log('Hardware Data:', hardwareData);
+
 
         // Fetch moreProducts
-        const moreResponse = await fetch('http://localhost:3001/moreProducts');
-        const moreData = await moreResponse.json();
+        const moreResponse = await axios.get('http://127.0.0.1:8000/api/items/');
+        const moreData = await moreResponse.data;
+
+        console.log('More Data:', moreData);
+
 
         // Update state
         setHardwareProducts(hardwareData);
@@ -101,7 +109,7 @@ const Hero = () => {
                             textAlign: 'left',
                           }}
                         >
-                          Ksh {product.price.toFixed(2)}
+                      Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
                         </p>
                         
                       </div>
@@ -154,7 +162,7 @@ const Hero = () => {
                             textAlign: 'left',
                           }}
                         >
-                          Ksh {product.price.toFixed(2)}
+                      Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
                         </p>
                       </div>
                     </div>
