@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const ProductDetails = ({ onAddToCart }) => {
   const { id } = useParams();
@@ -15,17 +16,13 @@ const ProductDetails = ({ onAddToCart }) => {
     const fetchData = async () => {
       try {
         // Fetch product details by ID
-        const response = await fetch(`http://localhost:3001/moreProducts/${id}`);
+        const response = await axios.get(`http://127.0.0.1:8000/api/items/${id}`);
         
-        if (!response.ok) {
-          // Handle non-successful responses (e.g., 404 Not Found)
+        if (response.status !== 200) {
           throw new Error(`Failed to fetch product details: ${response.statusText}`);
         }
   
-        const data = await response.json();
-  
-        // Log for debugging
-        console.log('Product Details:', data);
+        const data = await response.data;
   
         // Update state
         setProduct(data);
@@ -92,7 +89,9 @@ const ProductDetails = ({ onAddToCart }) => {
             <div className="card-body">
               <h5 className="card-title">{product.title}</h5>
               <p className="card-text">{product.description}</p>
-              <p style={{ ...priceStyle }}>Ksh {product.price.toFixed(2)}</p>
+              <p style={{ ...priceStyle }}>
+              Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
+                </p>
                 
                         <button
                             className="btn btn-primary"
