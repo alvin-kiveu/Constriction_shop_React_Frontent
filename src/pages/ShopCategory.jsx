@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import { FaScrewdriverWrench } from 'react-icons/fa6';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import './shopcategory.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -36,7 +34,7 @@ const ShopCategory = ({onAddToCart, cartItems}) => {
 
  
 
-  const uniqueCategories = Array.from(new Set(moreProducts.map((product) => product.category)));
+  const uniqueCategories = Array.from(new Set(moreProducts.map((product) => product.category_name)));
 
   const buttonStyle = {
     backgroundColor: '#e8ae5c', 
@@ -122,7 +120,7 @@ const ShopCategory = ({onAddToCart, cartItems}) => {
               <h2>Details for {selectedCategory}</h2>
               <div className="row">
                 {moreProducts
-                  .filter((product) => product.category === selectedCategory)
+                  .filter((product) => product.category_name === selectedCategory)
                   .map((product) => (
                     <div key={product.id} className="col-lg-4 col-md-6 mb-4">
                       <div className="card">

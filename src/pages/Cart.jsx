@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = ({ cartItems, setCartItems }) => {
   const [itemQuantities, setItemQuantities] = useState(
@@ -8,6 +9,8 @@ const Cart = ({ cartItems, setCartItems }) => {
       return quantities;
     }, {})
   );
+
+  const navigate = useNavigate()
 
   const handleRemoveItem = (index) => {
     setCartItems((prevItems) => {
@@ -56,6 +59,13 @@ const Cart = ({ cartItems, setCartItems }) => {
       0
     );
   };
+
+  
+
+  const handleProceedToCheckout = ()=>{
+   
+    navigate('/login')
+  }
 
   return (
     <div className="container mt-5">
@@ -113,11 +123,12 @@ const Cart = ({ cartItems, setCartItems }) => {
               <td colSpan="3">Total</td>
               <td>Kshs {calculateTotalPrice().toFixed(2)}</td>
               <td>
-                <Link to="/checkout">
-                  <button className="btn btn-success" style={{ backgroundColor: '#E8AE5C' }}>
+              
+                  <button className="btn btn-success" style={{ backgroundColor: '#E8AE5C' }}
+                  onClick={handleProceedToCheckout}>
                     Proceed to Checkout
                   </button>
-                </Link>
+               
               </td>
             </tr>
           </tfoot>

@@ -13,6 +13,8 @@ import Login from './pages/Login';
 import ProductDetails from './pages/ProductDetails';
 import { useState } from 'react';
 
+
+
 function App() {
   const [cartItems, setCartItems] = useState([]);
   console.log('Initial cartItems:', cartItems);
@@ -22,7 +24,9 @@ function App() {
   
     setCartItems([...cartItems, newItem]);
   };
-  
+  const handleLogin = (userData) => {
+    console.log('User logged in:', userData);
+  };
   
   return (
     <div>
@@ -35,7 +39,7 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/product' element={<Product/>}/>
         <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>
-         <Route path='/signup' element={<Login />} />
+         <Route path='/signup' element={<Login onLogin={handleLogin} />} />
         <Route path='/login' element={<LoginSignup/>}/>
         <Route path='/product/:id' element={<ProductDetails onAddToCart={handleAddToCart}/>}/>
         <Route path='/checkout' element={<Checkout/>}/>

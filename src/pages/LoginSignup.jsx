@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginSignup = () => {
   const navigate = useNavigate();
-  const [redirectToLogin, setRedirectToLogin] = useState(false);
+  const [registrationError, setRegistrationError] = useState(null);
+  
+
 
   const handleLoginLinkClick = () => {
-    setRedirectToLogin(true);
+    navigate('/signup');
+  };
+
+  const notifySuccess = async () => {
+
+     toast.success('Registration successful!', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
   };
 
   return (
@@ -58,11 +74,20 @@ const LoginSignup = () => {
 
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
+          onSubmit={async(values, { setSubmitting }) => {
+            try{
+              const response = await axios.post('http://127.0.0.1:8000/api/register', values);
+              await notifySuccess()
+              navigate('/signup');
+              alert('Registration successful')
+              console.log('Registration successful:', response.data);
+              
+            } catch(error){
+              console.error('Registration failed:', error.response);
+              setRegistrationError(error.response.data.detail);
+            }finally{
               setSubmitting(false);
-            }, 400);
+            }
           }}
         >
           {({
@@ -106,20 +131,33 @@ const LoginSignup = () => {
                 </label>
                 <ErrorMessage name="agreeToTerms" component="div" style={{ color: '#dc3545', marginTop: '5px' }} />
               </div>
+              {registrationError && <div style={{ color: '#dc3545', marginTop: '5px' }}>{registrationError}</div>}
 
-              <button type="submit" style={{ backgroundColor: '#e8ae5c', color: '#fff', padding: '12px', fontSize: '18px', border: 'none', borderRadius: '4px', cursor: 'pointer', width: '100%' }} disabled={isSubmitting}>
+              <button 
+              type="submit" 
+              style={{ backgroundColor: '#e8ae5c', 
+              color: '#fff', 
+              padding: '12px', 
+              fontSize: '18px', 
+              border: 'none', 
+              borderRadius: '4px', 
+              cursor: 'pointer', 
+              width: '100%' }} 
+              disabled={isSubmitting}
+              >
                 Submit
               </button>
 
               <p className="mt-3">
                     Already have an account?{' '}
-                    <span onClick={handleLoginLinkClick} style={{ cursor: 'pointer', color: 'blue' }}>Click here to login</span>
+                    <span onClick={handleLoginLinkClick} style={{ cursor: 'pointer', color: '#E8AE5C' }}>Click here to login</span>
                   </p>
 
-                  {redirectToLogin && <Navigate to="/signup" />}
+               
             </form>
           )}
         </Formik>
+        <ToastContainer />
       </div>
     </div>
   );

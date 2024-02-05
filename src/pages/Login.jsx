@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ onLogin }) => {
+  const [loginError, setLoginError] = useState(null);
+  const navigate = useNavigate();
+
+  const handleRegisterClick = ()=>{
+    navigate('/login')
+  }
+
+  const notify = () => {
+    toast.success('Login successful!', {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      style: {
+        fontSize: '16px',
+        borderRadius: '4px',
+        backgroundColor: '#dcae6e',
+        color: '#fff',
+        padding: '10px',
+      },
+    });
+  };
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <ToastContainer bodyClassName="custom-toast-body" />
       <div style={{ width: '400px', backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
         <h2 style={{ color: '#e8ae5c', textAlign: 'center' }}>Login</h2>
         <Formik
@@ -25,11 +55,26 @@ const Login = ({ onLogin }) => {
 
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            // Perform login logic (e.g., API call)
-            // Call onLogin callback with the login data
-            onLogin(values);
-            setSubmitting(false);
+          onSubmit={async (values, { setSubmitting }) => {
+            console.log('Submitting form with values:', values);
+
+            try {
+              if (Object.keys(values).every((key) => Boolean(values[key]))) {
+                const response = await axios.post('http://127.0.0.1:8000/api/login', values);
+                const token = response.data.jwt;
+                notify();
+                onLogin(values);
+                navigate('/');
+                alert('login successful')
+              }
+            } catch (error) {
+              console.error('Login failed:', error);
+              setLoginError(error.response?.data?.detail || 'An error occurred during login.');
+            } finally {
+              if (setSubmitting) {
+                setSubmitting(false);
+              }
+            }
           }}
         >
           {({ isSubmitting }) => (
@@ -45,10 +90,15 @@ const Login = ({ onLogin }) => {
                 <Field type="password" name="password" style={{ width: '100%', padding: '10px', fontSize: '16px', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }} />
                 <ErrorMessage name="password" component="div" style={{ color: '#dc3545', marginTop: '5px' }} />
               </div>
-
+              {loginError && <div style={{ color: '#dc3545', marginTop: '5px' }}>{loginError}</div>}
               <button type="submit" style={{ backgroundColor: '#e8ae5c', color: '#fff', padding: '12px', fontSize: '18px', border: 'none', borderRadius: '4px', cursor: 'pointer', width: '100%' }} disabled={isSubmitting}>
                 Login
               </button>
+
+              <p className="mt-3">
+                    Don't have an account?{' '}
+                    <span onClick={handleRegisterClick} style={{ cursor: 'pointer', color: '#E8AE5C' }}>Click here to sign up</span>
+                  </p>
             </Form>
           )}
         </Formik>
@@ -58,6 +108,9 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
+
+
+
 
 
 
