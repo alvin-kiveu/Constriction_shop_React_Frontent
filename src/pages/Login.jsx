@@ -9,11 +9,11 @@ const Login = ({ onLogin }) => {
   const [loginError, setLoginError] = useState(null);
   const navigate = useNavigate();
 
-  const handleRegisterClick = ()=>{
-    navigate('/login')
-  }
+  const handleRegisterClick = () => {
+    navigate('/signup'); // Assuming '/signup' is the route for your registration page
+  };
 
-  const notify = () => {
+  const notifySuccess = () => {
     toast.success('Login successful!', {
       position: 'top-center',
       autoClose: 1500,
@@ -56,24 +56,18 @@ const Login = ({ onLogin }) => {
             return errors;
           }}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log('Submitting form with values:', values);
-
             try {
-              if (Object.keys(values).every((key) => Boolean(values[key]))) {
-                const response = await axios.post('http://127.0.0.1:8000/api/login', values);
-                const token = response.data.jwt;
-                notify();
-                onLogin(values);
-                navigate('/');
-                alert('login successful')
-              }
+              const response = await axios.post('http://127.0.0.1:8000/api/login', values);
+              const token = response.data.jwt;
+              notifySuccess();
+              onLogin(values);
+              navigate('/');
+              alert('Login successful');
             } catch (error) {
               console.error('Login failed:', error);
               setLoginError(error.response?.data?.detail || 'An error occurred during login.');
             } finally {
-              if (setSubmitting) {
-                setSubmitting(false);
-              }
+              setSubmitting(false);
             }
           }}
         >
@@ -96,9 +90,11 @@ const Login = ({ onLogin }) => {
               </button>
 
               <p className="mt-3">
-                    Don't have an account?{' '}
-                    <span onClick={handleRegisterClick} style={{ cursor: 'pointer', color: '#E8AE5C' }}>Click here to sign up</span>
-                  </p>
+                Don't have an account?{' '}
+                <span onClick={handleRegisterClick} style={{ cursor: 'pointer', color: '#E8AE5C' }}>
+                  Click here to sign up
+                </span>
+              </p>
             </Form>
           )}
         </Formik>
@@ -108,6 +104,7 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
+
 
 
 

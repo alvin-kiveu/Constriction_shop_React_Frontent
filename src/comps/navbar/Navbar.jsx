@@ -49,6 +49,10 @@ const Navbar = ({cartItemCount}) => {
         <div className="nav-login-cart">
           <Link to='/login'><button className="btn btn-primary">Login</button></Link>
         </div>
+
+        <div className="nav-login-cart">
+          <Link to='/logout'><button className="btn btn-primary">Logout</button></Link>
+        </div>
         
         <div className="nav-cart">
           <Link to='cart'><BsCart4 className="cart-icon"  /></Link>

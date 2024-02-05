@@ -8,16 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 const LoginSignup = () => {
   const navigate = useNavigate();
   const [registrationError, setRegistrationError] = useState(null);
-  
-
 
   const handleLoginLinkClick = () => {
-    navigate('/signup');
+    navigate('/signup'); 
   };
 
   const notifySuccess = async () => {
-
-     toast.success('Registration successful!', {
+    toast.success('Registration successful!', {
       position: 'top-center',
       autoClose: 3000,
       hideProgressBar: true,
@@ -28,6 +25,7 @@ const LoginSignup = () => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      {/* Registration Form */}
       <div style={{ width: '400px', backgroundColor: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
         <h2 style={{ color: '#e8ae5c', textAlign: 'center' }}>Signup</h2>
         <Formik
@@ -74,18 +72,26 @@ const LoginSignup = () => {
 
             return errors;
           }}
-          onSubmit={async(values, { setSubmitting }) => {
-            try{
+          onSubmit={async (values, { setSubmitting }) => {
+            try {
               const response = await axios.post('http://127.0.0.1:8000/api/register', values);
-              await notifySuccess()
+              await notifySuccess();
+
+              // Login the user after successful registration
+              const loginResponse = await axios.post('http://127.0.0.1:8000/api/login', {
+                email: values.email,
+                password: values.password,
+              });
+
+              // Store JWT on the frontend
+              document.cookie = `jwt=${loginResponse.data.jwt}; path=/`;
               navigate('/signup');
-              alert('Registration successful')
+
               console.log('Registration successful:', response.data);
-              
-            } catch(error){
+            } catch (error) {
               console.error('Registration failed:', error.response);
-              setRegistrationError(error.response.data.detail);
-            }finally{
+              setRegistrationError(error.response?.data?.detail || 'Registration failed');
+            } finally {
               setSubmitting(false);
             }
           }}
@@ -133,27 +139,20 @@ const LoginSignup = () => {
               </div>
               {registrationError && <div style={{ color: '#dc3545', marginTop: '5px' }}>{registrationError}</div>}
 
-              <button 
-              type="submit" 
-              style={{ backgroundColor: '#e8ae5c', 
-              color: '#fff', 
-              padding: '12px', 
-              fontSize: '18px', 
-              border: 'none', 
-              borderRadius: '4px', 
-              cursor: 'pointer', 
-              width: '100%' }} 
-              disabled={isSubmitting}
+              <button
+                type="submit"
+                style={{ backgroundColor: '#e8ae5c', color: '#fff', padding: '12px', fontSize: '18px', border: 'none', borderRadius: '4px', cursor: 'pointer', width: '100%' }}
+                disabled={isSubmitting}
               >
                 Submit
               </button>
 
               <p className="mt-3">
-                    Already have an account?{' '}
-                    <span onClick={handleLoginLinkClick} style={{ cursor: 'pointer', color: '#E8AE5C' }}>Click here to login</span>
-                  </p>
-
-               
+                Already have an account?{' '}
+                <span onClick={handleLoginLinkClick} style={{ cursor: 'pointer', color: '#E8AE5C' }}>
+                  Click here to login
+                </span>
+              </p>
             </form>
           )}
         </Formik>

@@ -12,6 +12,7 @@ import Footer from './comps/footer/Footer';
 import Login from './pages/Login';
 import ProductDetails from './pages/ProductDetails';
 import { useState } from 'react';
+import Logout from './pages/Logout';
 
 
 
@@ -39,6 +40,7 @@ function App() {
         <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>
          <Route path='/signup' element={<Login onLogin={handleLogin} />} />
         <Route path='/login' element={<LoginSignup/>}/>
+        <Route path='/logout' element={<Logout/>}/>
         <Route path='/product/:id' element={<ProductDetails onAddToCart={handleAddToCart}/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
