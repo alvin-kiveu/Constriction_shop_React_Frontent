@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = ({ cartItems, setCartItems }) => {
@@ -24,12 +23,13 @@ const Cart = ({ cartItems, setCartItems }) => {
       return updatedCart;
     });
   };
-
+  
   const handleIncreaseQuantity = (index) => {
     setCartItems((prevItems) => {
       const updatedCart = [...prevItems];
-      const item = updatedCart[index];
+      const item = { ...updatedCart[index] };
       item.quantity += 1;
+      updatedCart[index] = item;
       setItemQuantities((prevQuantities) => ({
         ...prevQuantities,
         [item.id]: item.quantity,
@@ -37,13 +37,14 @@ const Cart = ({ cartItems, setCartItems }) => {
       return updatedCart;
     });
   };
-
+  
   const handleDecreaseQuantity = (index) => {
     setCartItems((prevItems) => {
       const updatedCart = [...prevItems];
-      const item = updatedCart[index];
+      const item = { ...updatedCart[index] };
       if (item.quantity > 1) {
         item.quantity -= 1;
+        updatedCart[index] = item;
         setItemQuantities((prevQuantities) => ({
           ...prevQuantities,
           [item.id]: item.quantity,
@@ -52,13 +53,21 @@ const Cart = ({ cartItems, setCartItems }) => {
       return updatedCart;
     });
   };
-
+  
   const calculateTotalPrice = () => {
-    return cartItems.reduce(
-      (total, item) => total + (typeof item.price === 'string' ? parseFloat(item.price) : item.price) * item.quantity,
+    const totalPrice = cartItems.reduce(
+      (total, item) => {
+        const itemTotal = (typeof item.price === 'string' ? parseFloat(item.price) : item.price) * item.quantity;
+        console.log(`Item: ${item.title}, Price: ${item.price}, Quantity: ${item.quantity}, Item Total: ${itemTotal}`);
+        return total + itemTotal;
+      },
       0
     );
+  
+    console.log(`Total Price: ${totalPrice}`);
+    return totalPrice;
   };
+  
 
   
 

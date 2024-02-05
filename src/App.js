@@ -17,9 +17,7 @@ import { useState } from 'react';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  console.log('Initial cartItems:', cartItems);
   const handleAddToCart = (product) => {
-    // Add necessary properties to the product object before adding it to the cart
     const newItem = { ...product, quantity: 1 };
   
     setCartItems([...cartItems, newItem]);
