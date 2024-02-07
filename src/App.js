@@ -11,7 +11,7 @@ import Checkout from './pages/Checkout';
 import Footer from './comps/footer/Footer';
 import Login from './pages/Login';
 import ProductDetails from './pages/ProductDetails';
-import { useState } from 'react';
+import {  useState } from 'react';
 import Logout from './pages/Logout';
 
 
@@ -19,6 +19,8 @@ import Logout from './pages/Logout';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+
+
   const handleAddToCart = (product) => {
     const newItem = { ...product, quantity: 1 };
   
@@ -32,6 +34,8 @@ function App() {
   const handleLogout = () => {
     setIsAuthenticated(false); 
   };
+
+  
   
   return (
     <div>
@@ -58,5 +62,8 @@ function App() {
     </div>
   );
 }
+
+
+
 
 export default App;
