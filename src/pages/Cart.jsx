@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
+const Cart = ({ cartItems, setCartItems }) => {
   const [itemQuantities, setItemQuantities] = useState(
     cartItems.reduce((quantities, item) => {
       quantities[item.id] = item.quantity;
@@ -72,13 +72,8 @@ const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
   
 
   const handleProceedToCheckout = ()=>{
-   if(isAuthenticated){
-    navigate('/checkout');
-   }else{
+   
     navigate('/login')
-
-   }
-    
   }
 
   return (
