@@ -1,106 +1,33 @@
 /* hero.css */
-.hero {
-  background-color: #f8f9fa;
-  padding: 40px 0;
-}
 
-
-.hero-content {
-  margin-top: 20px;
-}
-
-.hero-wrench-icon {
-  margin-bottom: 20px;
-}
-
-.hero-latest-gtn h4,
-.container h4 {
-  color: #343a40;
-}
-
-.splide__slide img {
-  width: 100%;
+.card {
   border-radius: 8px;
-  margin-bottom: 10px;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 20px; /* Add margin to create space between cards */
 }
 
-.splide__slide h5 {
-  font-size: 18px;
-  margin-top: 10px;
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.splide__slide p {
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-align: left;
+.card .card-body {
+  padding: 20px;
 }
 
-.splide__slide p:last-child {
-  margin-bottom: 0;
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.splide__slide h5,
-.splide__slide p {
-  color: #6c757d;
-  text-align: left;
+h2 {
+  margin-bottom: 30px;
 }
 
-
-/* hero.css */
-/* ... existing styles ... */
-
-.container h4 {
-  color: #343a40;
-  margin-bottom: 20px;
-}
-
-.container .product-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.container .product {
-  width: calc(25% - 20px); /* 20px is the total margin space between items */
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  padding: 0 10px;
-}
-
-.container .product img {
+.card-img-top {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.container .product h5 {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.container .product p {
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-align: left; /* Align text to the left */
-}
-
-.container .product p:last-child {
-  margin-bottom: 0;
-  
-}
-
-.container .product h5,
-.container .product p {
-  color: #6c757d;
-}
-.container .product h5 {
-  font-size: 18px;
-  margin-top: 10px;
-  text-align: left; /* Align title to the left */
-}
-
-.container .product p {
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-align: left;
+  height: 300px; /* Set a fixed height for the images */
+  object-fit: cover; /* Ensure images maintain aspect ratio within fixed height */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }

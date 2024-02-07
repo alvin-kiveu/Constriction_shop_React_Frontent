@@ -6,7 +6,6 @@ import { FaScrewdriverWrench } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-
 const Hero = () => {
   const [hardwareProducts, setHardwareProducts] = useState([]);
   const [moreProducts, setMoreProducts] = useState([]);
@@ -22,15 +21,9 @@ const Hero = () => {
         const hardwareResponse = await axios.get('http://127.0.0.1:8000/api/items/');
         const hardwareData = await hardwareResponse.data;
 
-        console.log('Hardware Data:', hardwareData);
-
-
         // Fetch moreProducts
         const moreResponse = await axios.get('http://127.0.0.1:8000/api/items/');
         const moreData = await moreResponse.data;
-
-        console.log('More Data:', moreData);
-
 
         // Update state
         setHardwareProducts(hardwareData);
@@ -44,7 +37,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="hero container mt-5" style={{ backgroundColor: '#f8f9fa', padding: '40px 0' }}>
+    <div className="container mt-5" style={{ backgroundColor: '#f8f9fa', padding: '40px 0' }}>
       <div className="row justify-content-center align-items-center text-center">
         <div className="col-lg-12">
           <h2 className="display-4">Your Premier Source for Construction Materials</h2>
@@ -78,44 +71,26 @@ const Hero = () => {
               }}
             >
               {hardwareProducts.map((product) => (
-                // <Link to={`/product/${product.id}`} key={product.id} className="text-decoration-none text-dark">
-                  <SplideSlide key={product.id} className="splide__slide col-md-4 mb-4">
-                    <div className="card" style={{ width: '100%' }}>
+                <SplideSlide key={product.id} className="col-md-4" style={{ marginBottom: '20px' }}>
+                  <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
+                    <div className="card">
                       <img
                         src={product.image}
                         alt={product.title}
                         className="card-img-top img-fluid rounded"
-                        style={{ width: '100%', borderRadius: '8px', marginBottom: '10px' }}
+                        style={{ borderRadius: '8px', marginBottom: '10px' }}
                       />
                       <div className="card-body">
-                        <h5 style={{ fontSize: '18px', marginTop: '10px', color: '#6c757d', textAlign: 'left' }}>
+                        <h5 className="card-title" style={{ fontSize: '18px', color: '#6c757d', textAlign: 'left' }}>
                           {product.title}
                         </h5>
-                        <p
-                          style={{
-                            fontSize: '14px',
-                            marginBottom: '10px',
-                            textAlign: 'left',
-                            color: '#6c757d',
-                          }}
-                        >
-                          {product.description}
+                        <p className="card-text" style={{ ...priceStyle, fontSize: '14px', textAlign: 'left' }}>
+                          Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
                         </p>
-                        <p
-                          style={{
-                            ...priceStyle,
-                            fontSize: '14px',
-                            marginBottom: '0',
-                            textAlign: 'left',
-                          }}
-                        >
-                      Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
-                        </p>
-                        
                       </div>
                     </div>
-                  </SplideSlide>
-                // </Link>
+                  </Link>
+                </SplideSlide>
               ))}
             </Splide>
           </div>
@@ -127,42 +102,21 @@ const Hero = () => {
 
             <div className="row">
               {moreProducts.map((product) => (
-                <div key={product.id} className="col-md-4 mb-4">
-                  <Link
-                    to={`/product/${product.id}`}
-                    className="text-decoration-none text-dark"
-                    style={{ width: '100%' }}
-                  >
-                    <div className="card" style={{ width: '100%' }}>
+                <div key={product.id} className="col-md-4" style={{ marginBottom: '20px' }}>
+                  <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
+                    <div className="card">
                       <img
                         src={product.image}
                         alt={product.title}
                         className="card-img-top img-fluid rounded"
-                        style={{ width: '100%', borderRadius: '8px', marginBottom: '10px' }}
+                        style={{ borderRadius: '8px', marginBottom: '10px' }}
                       />
                       <div className="card-body">
-                        <h5 style={{ fontSize: '18px', marginTop: '10px', color: '#6c757d', textAlign: 'left' }}>
+                        <h5 className="card-title" style={{ fontSize: '18px', color: '#6c757d', textAlign: 'left' }}>
                           {product.title}
                         </h5>
-                        <p
-                          style={{
-                            fontSize: '14px',
-                            marginBottom: '10px',
-                            textAlign: 'left',
-                            color: '#6c757d',
-                          }}
-                        >
-                          {product.description}
-                        </p>
-                        <p
-                          style={{
-                            ...priceStyle,
-                            fontSize: '14px',
-                            marginBottom: '0',
-                            textAlign: 'left',
-                          }}
-                        >
-                      Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
+                        <p className="card-text" style={{ ...priceStyle, fontSize: '14px', textAlign: 'left' }}>
+                          Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
                         </p>
                       </div>
                     </div>

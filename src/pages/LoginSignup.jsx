@@ -16,7 +16,7 @@ const LoginSignup = () => {
   const notifySuccess = async () => {
     toast.success('Registration successful!', {
       position: 'top-center',
-      autoClose: 3000,
+      autoClose: 3500,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,

@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, isAuthenticated }) => {
   const [loginError, setLoginError] = useState(null);
   const navigate = useNavigate();
 
@@ -30,6 +30,10 @@ const Login = ({ onLogin }) => {
       },
     });
   };
+
+  if (isAuthenticated) {
+    navigate('/checkout');
+  }
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -61,7 +65,8 @@ const Login = ({ onLogin }) => {
               const token = response.data.jwt;
               notifySuccess();
               onLogin(values);
-              navigate('/');
+              localStorage.setItem('token', token)
+              navigate('/checkout');
               alert('Login successful');
             } catch (error) {
               console.error('Login failed:', error);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FaScrewdriverWrench } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
 import './shopcategory.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

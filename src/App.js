@@ -17,6 +17,7 @@ import Logout from './pages/Logout';
 
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const handleAddToCart = (product) => {
     const newItem = { ...product, quantity: 1 };
@@ -25,12 +26,17 @@ function App() {
   };
   const handleLogin = (userData) => {
     console.log('User logged in:', userData);
+    setIsAuthenticated(true)
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false); 
   };
   
   return (
     <div>
       <BrowserRouter>
-      <Navbar cartItemCount={cartItems.length}/>
+      <Navbar cartItemCount={cartItems.length} isAuthenticated={isAuthenticated} onLogout={handleLogout}/>
       <Routes>
         <Route path='/' element={<Shop/>}/>
         <Route path='/categories' element={<ShopCategory onAddToCart={handleAddToCart}/>}/>
@@ -40,7 +46,7 @@ function App() {
         <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>
          <Route path='/signup' element={<Login onLogin={handleLogin} />} />
         <Route path='/login' element={<LoginSignup/>}/>
-        <Route path='/logout' element={<Logout/>}/>
+        <Route path='/logout' element={<Logout onLogout={handleLogout}/>}/>
         <Route path='/product/:id' element={<ProductDetails onAddToCart={handleAddToCart}/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
