@@ -8,18 +8,27 @@ import 'react-toastify/dist/ReactToastify.css';
 const LoginSignup = () => {
   const navigate = useNavigate();
   const [registrationError, setRegistrationError] = useState(null);
+  
 
   const handleLoginLinkClick = () => {
     navigate('/login'); 
   };
 
-  const notifySuccess = async () => {
+  const notifySuccess = () => {
     toast.success('Registration successful!', {
       position: 'top-center',
-      autoClose: 3500,
+      autoClose: 2500,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
+      draggable: true,
+      style: {
+        fontSize: '16px',
+        borderRadius: '4px',
+        backgroundColor: '#dcae6e',
+        color: '#fff',
+        padding: '10px',
+      },
     });
   };
 
@@ -75,7 +84,10 @@ const LoginSignup = () => {
           onSubmit={async (values, { setSubmitting }) => {
             try {
               const response = await axios.post('http://127.0.0.1:8000/api/register', values);
-              await notifySuccess();
+              
+              
+              
+              notifySuccess();
 
               // Login the user after successful registration
               const loginResponse = await axios.post('http://127.0.0.1:8000/api/login', {
@@ -85,9 +97,9 @@ const LoginSignup = () => {
 
               // Store JWT on the frontend
               document.cookie = `jwt=${loginResponse.data.jwt}; path=/`;
-              navigate('/signup');
+              navigate('/login');
 
-              console.log('Registration successful:', response.data);
+              // console.log('Registration successful:', response.data);
             } catch (error) {
               console.error('Registration failed:', error.response);
               setRegistrationError(error.response?.data?.detail || 'Registration failed');

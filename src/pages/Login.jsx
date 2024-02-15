@@ -66,7 +66,7 @@ const Login = ({ onLogin, isAuthenticated }) => {
               notifySuccess();
               onLogin(values);
               localStorage.setItem('token', token)
-              navigate('/checkout');
+             
               
             } catch (error) {
               console.error('Login failed:', error);
