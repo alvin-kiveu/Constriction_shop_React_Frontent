@@ -10,7 +10,7 @@ const Login = ({ onLogin, isAuthenticated }) => {
   const navigate = useNavigate();
 
   const handleRegisterClick = () => {
-    navigate('/signup'); // Assuming '/signup' is the route for your registration page
+    navigate('/signup'); 
   };
 
   const notifySuccess = () => {
@@ -67,7 +67,7 @@ const Login = ({ onLogin, isAuthenticated }) => {
               onLogin(values);
               localStorage.setItem('token', token)
               navigate('/checkout');
-              alert('Login successful');
+              
             } catch (error) {
               console.error('Login failed:', error);
               setLoginError(error.response?.data?.detail || 'An error occurred during login.');

@@ -7,7 +7,6 @@ import Product from './pages/Product';
 import LoginSignup from './pages/LoginSignup';
 import Cart from './pages/Cart';
 import About from './pages/About';
-import Checkout from './pages/Checkout';
 import Footer from './comps/footer/Footer';
 import Login from './pages/Login';
 import ProductDetails from './pages/ProductDetails';
@@ -47,12 +46,11 @@ function App() {
         <Route path='/deals' element={<Product onAddToCart={handleAddToCart}/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/product' element={<Product/>}/>
-        <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>
-         <Route path='/signup' element={<Login onLogin={handleLogin} />} />
-        <Route path='/login' element={<LoginSignup/>}/>
+        <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems} onLogin={handleLogin}/>}/>
+         <Route path='/login' element={<Login onLogin={handleLogin} />} />
+        <Route path='/signup' element={<LoginSignup/>}/>
         <Route path='/logout' element={<Logout onLogout={handleLogout}/>}/>
         <Route path='/product/:id' element={<ProductDetails onAddToCart={handleAddToCart}/>}/>
-        <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
       <Footer/>
       

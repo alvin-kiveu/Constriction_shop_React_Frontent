@@ -10,7 +10,7 @@ const LoginSignup = () => {
   const [registrationError, setRegistrationError] = useState(null);
 
   const handleLoginLinkClick = () => {
-    navigate('/signup'); 
+    navigate('/login'); 
   };
 
   const notifySuccess = async () => {
