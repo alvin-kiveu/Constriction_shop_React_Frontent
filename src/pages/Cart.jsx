@@ -18,20 +18,21 @@ const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
   const handleIncreaseQuantity = (index) => {
     setCartItems((prevItems) => {
       const updatedCart = [...prevItems];
-      updatedCart[index].quantity++;
+      updatedCart[index] = {...updatedCart[index], quantity: updatedCart[index].quantity + 1};
       return updatedCart;
     });
   };
-
+  
   const handleDecreaseQuantity = (index) => {
     setCartItems((prevItems) => {
       const updatedCart = [...prevItems];
       if (updatedCart[index].quantity > 1) {
-        updatedCart[index].quantity--;
+        updatedCart[index] = {...updatedCart[index], quantity: updatedCart[index].quantity - 1};
       }
       return updatedCart;
     });
   };
+  
 
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => total + (parseFloat(item.price) * item.quantity), 0);

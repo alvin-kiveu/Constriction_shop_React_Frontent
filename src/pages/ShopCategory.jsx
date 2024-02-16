@@ -116,7 +116,7 @@ const ShopCategory = ({onAddToCart, cartItems}) => {
 
           {selectedCategory && (
             <div className="container mt-4">
-              <h2>Details for {selectedCategory}</h2>
+              <h2> {selectedCategory}</h2>
               <div className="row">
                 {moreProducts
                   .filter((product) => product.category_name === selectedCategory)
