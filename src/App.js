@@ -28,6 +28,8 @@ function App() {
   const handleLogin = (userData) => {
     console.log('User logged in:', userData);
     setIsAuthenticated(true)
+    
+    
   };
 
   const handleLogout = () => {
@@ -47,7 +49,7 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/product' element={<Product/>}/>
         <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems} onLogin={handleLogin}/>}/>
-         <Route path='/login' element={<Login onLogin={handleLogin} />} />
+         <Route path='/login' element={<Login onLogin={handleLogin} isAuthenticated={isAuthenticated} cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path='/signup' element={<LoginSignup/>}/>
         <Route path='/logout' element={<Logout onLogout={handleLogout}/>}/>
         <Route path='/product/:id' element={<ProductDetails onAddToCart={handleAddToCart}/>}/>

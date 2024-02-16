@@ -4,9 +4,13 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from "../config/index";
 
-const Login = ({ onLogin, isAuthenticated }) => {
+
+const Login = ({ onLogin, isAuthenticated, cartItems }) => {
   const [loginError, setLoginError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleRegisterClick = () => {
@@ -31,9 +35,43 @@ const Login = ({ onLogin, isAuthenticated }) => {
     });
   };
 
-  if (isAuthenticated) {
-    navigate('/checkout');
-  }
+  const redirectToCheckout = async () => {
+    setLoading(true);
+    try {
+      if(!isAuthenticated){
+        navigate('/login');
+        // return;
+      }
+      
+      const response = await fetch(`${API_URL}/api/stripe/create-checkout-session`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cartItems }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to initiate checkout");
+      }
+  
+      const data = await response.json();
+      console.log("Response from server:", data);
+  
+      const { checkout_session_url } = data;
+  
+      if (!checkout_session_url) {
+        throw new Error("Invalid response from server: checkout_session_url not found");
+      }
+  
+      // Redirect to Stripe checkout using the checkout_session_url
+      window.location.href = checkout_session_url;
+    } catch (error) {
+      console.error("Error initiating checkout:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -66,6 +104,8 @@ const Login = ({ onLogin, isAuthenticated }) => {
               notifySuccess();
               onLogin(values);
               localStorage.setItem('token', token)
+              redirectToCheckout()
+
              
               
             } catch (error) {
@@ -90,8 +130,8 @@ const Login = ({ onLogin, isAuthenticated }) => {
                 <ErrorMessage name="password" component="div" style={{ color: '#dc3545', marginTop: '5px' }} />
               </div>
               {loginError && <div style={{ color: '#dc3545', marginTop: '5px' }}>{loginError}</div>}
-              <button type="submit" style={{ backgroundColor: '#e8ae5c', color: '#fff', padding: '12px', fontSize: '18px', border: 'none', borderRadius: '4px', cursor: 'pointer', width: '100%' }} disabled={isSubmitting}>
-                Login
+              <button type="submit" style={{ backgroundColor: '#e8ae5c', color: '#fff', padding: '12px', fontSize: '18px', border: 'none', borderRadius: '4px', cursor: 'pointer', width: '100%' }} disabled={loading || isSubmitting}>
+              {loading ? "Processing..." : "Login"}
               </button>
 
               <p className="mt-3">
