@@ -1,4 +1,4 @@
-
+/* 
 .about-us {
     text-align: center;
   }
@@ -33,7 +33,7 @@
 
   .mission-section p,
 .commitment-section p {
-  font-size: 1.3rem; /* Increased font size for mission and commitment paragraphs */
+  font-size: 1.3rem; 
 }
   
   b {
@@ -41,4 +41,4 @@
     font-weight: bold;
 
   }
-  
+   */

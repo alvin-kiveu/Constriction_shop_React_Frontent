@@ -76,39 +76,90 @@ const Product = ({ onAddToCart }) => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">On Offer Products</h2>
-      <ToastContainer  bodyClassName="custom-toast-body" />
-      <div className="row">
-        {onOfferProducts.map((product) => (
-          <div key={product.id} className="col-lg-4 col-md-6 mb-4">
-            <div className="card" style={cardStyle}>
-              <img src={product.image} alt={product.title} className="card-img-top" />
-              <div className="card-body" style={cardBodyStyle}>
-                <div>
-                  <h5 className="card-title">{product.title}</h5>
-                  <p className="card-text">{product.description}</p>
-                </div>
-                <p className="card-text" style={priceStyle}>
-                Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
-                </p>
+    // <div className="container mt-5">
+    //   <h2 className="mb-4">On Offer Products</h2>
+    //   <ToastContainer  bodyClassName="custom-toast-body" />
+    //   <div className="row">
+    //     {onOfferProducts.map((product) => (
+    //       <div key={product.id} className="col-lg-4 col-md-6 mb-4">
+    //         <div className="card" style={cardStyle}>
+    //           <img src={product.image} alt={product.title} className="card-img-top" />
+    //           <div className="card-body" style={cardBodyStyle}>
+    //             <div>
+    //               <h5 className="card-title">{product.title}</h5>
+    //               <p className="card-text">{product.description}</p>
+    //             </div>
+    //             <p className="card-text" style={priceStyle}>
+    //             Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
+    //             </p>
 
-                <button
-                  className="btn btn-primary"
-                  style={buttonStyle}
-                  onClick={() => {
-                    onAddToCart(product);
-                    notify(product.title);
-                  }}
-                >
-                  Add to cart
-                </button>
+    //             <button
+    //               className="btn btn-primary"
+    //               style={buttonStyle}
+    //               onClick={() => {
+    //                 onAddToCart(product);
+    //                 notify(product.title);
+    //               }}
+    //             >
+    //               Add to cart
+    //             </button>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     ))}
+    //   </div>
+    // </div>
+
+    <div className="container mt-5">
+  <h2 className="mb-4">On Offer Products</h2>
+  <ToastContainer bodyClassName="custom-toast-body" />
+  <div className="row">
+    {onOfferProducts.map((product) => {
+      // Calculate 10% of the product price
+      const tenPercentOfPrice = (parseFloat(product.price) * 0.1).toFixed(2);
+
+      return (
+        <div key={product.id} className="col-lg-4 col-md-6 mb-4">
+          <div className="card" style={cardStyle}>
+            <img src={product.image} alt={product.title} className="card-img-top" />
+            <div className="card-body" style={cardBodyStyle}>
+              <div>
+                <h5 className="card-title">{product.title}</h5>
+                <p className="card-text">{product.description}</p>
               </div>
+              <p className="card-text" style={priceStyle}>
+                <span style={{textDecoration:'line-through'}}>
+                Ksh {typeof product.price === 'string' ? parseFloat(product.price).toFixed(2) : 'N/A'}
+                </span>
+                
+              </p>
+
+              {/* Display 10% of the product price */}
+              <p className="card-text" style={priceStyle}>
+                Ksh {tenPercentOfPrice}
+              </p>
+
+              <button
+                className="btn btn-primary"
+                style={buttonStyle}
+                onClick={() => {
+                  onAddToCart(product);
+                  notify(product.title);
+                }}
+              >
+                Add to cart
+              </button>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+
+
+
   );
 };
 

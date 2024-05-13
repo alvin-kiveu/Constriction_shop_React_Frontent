@@ -40,8 +40,8 @@ const Navbar = ({cartItemCount}) => {
             <li className="nav-item" onClick={()=>{setMenu('deals')}}>
             <span style={menu === 'deals' ? activeItemStyle : null}><Link to='/deals' style={linkStyle}> Deals</Link></span>
             </li>
-            <li className="nav-item"onClick={()=>{setMenu('about')}} >
-            <span style={menu === 'about' ? activeItemStyle : null}><Link to='/about' style={linkStyle}>About Us</Link></span>
+            <li className="nav-item"onClick={()=>{setMenu('professions')}} >
+            <span style={menu === 'about' ? activeItemStyle : null}><Link to='/professions' style={linkStyle}>Professions</Link></span>
             </li>
           </ul>
         </div>

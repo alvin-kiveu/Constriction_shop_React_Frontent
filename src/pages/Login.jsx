@@ -35,43 +35,60 @@ const Login = ({ onLogin, isAuthenticated, cartItems }) => {
     });
   };
 
-  const redirectToCheckout = async () => {
+  //REDIRECT TO CART
+  const redirectToCart = async () => {
     setLoading(true);
     try {
-      if(!isAuthenticated){
-        navigate('/login');
-        // return;
-      }
-      
-      const response = await fetch(`${API_URL}/api/stripe/create-checkout-session`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ cartItems }),
-      });
-  
-      if (!response.ok) {
-        throw new Error("Failed to initiate checkout");
-      }
-  
-      const data = await response.json();
-      console.log("Response from server:", data);
-  
-      const { checkout_session_url } = data;
-  
-      if (!checkout_session_url) {
-        throw new Error("Invalid response from server: checkout_session_url not found");
-      }
-  
-      // Redirect to Stripe checkout using the checkout_session_url
-      window.location.href = checkout_session_url;
+      console.log("Is authenticated:", isAuthenticated);
+      // if(!isAuthenticated === true){
+      //   navigate('/login');
+      //   return;
+      // }
+      navigate('/cart');
     } catch (error) {
       console.error("Error initiating checkout:", error);
     } finally {
       setLoading(false);
     }
   };
+
+  // const redirectToCheckout = async () => {
+  //   setLoading(true);
+  //   try {
+  //     if(!isAuthenticated){
+  //       navigate('/login');
+  //       // return;
+  //     }
+      
+  //     const response = await fetch(`${API_URL}/api/stripe/create-checkout-session`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ cartItems }),
+  //     });
+  
+  //     if (!response.ok) {
+  //       throw new Error("Failed to initiate checkout");
+  //     }
+  
+  //     const data = await response.json();
+  //     console.log("Response from server:", data);
+  
+  //     const { checkout_session_url } = data;
+  
+  //     if (!checkout_session_url) {
+  //       throw new Error("Invalid response from server: checkout_session_url not found");
+  //     }
+  
+  //     // Redirect to Stripe checkout using the checkout_session_url
+  //     window.location.href = checkout_session_url;
+  //   } catch (error) {
+  //     console.error("Error initiating checkout:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -101,10 +118,14 @@ const Login = ({ onLogin, isAuthenticated, cartItems }) => {
             try {
               const response = await axios.post('http://127.0.0.1:8000/api/login', values);
               const token = response.data.jwt;
+              localStorage.setItem('token', token)
+              //console.log('Login response:', token);
               notifySuccess();
               onLogin(values);
-              localStorage.setItem('token', token)
-              redirectToCheckout()
+              redirectToCart();
+
+           
+              //redirectToCheckout()
 
              
               

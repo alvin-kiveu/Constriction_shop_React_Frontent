@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from "../config/index";
+import ShippingDetails from './Shipping';
 
 const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,6 @@ const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
     });
   };
   
-
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => total + (parseFloat(item.price) * item.quantity), 0);
   };
@@ -48,34 +48,38 @@ const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
   const handleProceedToCheckout = async () => {
     setLoading(true);
     try {
-      if(!isAuthenticated){
-        navigate('/login');
-        return;
-      }
+      // if (!isAuthenticated) {
+      //   console.log('User is not authenticated. Redirecting to login page...');
+      //   navigate('/login');
+      //   return;
+      // }
+
+      console.log('User is authenticated. Proceeding to checkout...');
+       navigate('/checkout');
       
-      const response = await fetch(`${API_URL}/api/stripe/create-checkout-session`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ cartItems }),
-      });
+      // const response = await fetch(`${API_URL}/api/stripe/create-checkout-session`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ cartItems }),
+      // });
   
-      if (!response.ok) {
-        throw new Error("Failed to initiate checkout");
-      }
+      // if (!response.ok) {
+      //   throw new Error("Failed to initiate checkout");
+      // }
   
-      const data = await response.json();
-      console.log("Response from server:", data);
+      // const data = await response.json();
+      // console.log("Response from server:", data);
   
-      const { checkout_session_url } = data;
+      // const { checkout_session_url } = data;
   
-      if (!checkout_session_url) {
-        throw new Error("Invalid response from server: checkout_session_url not found");
-      }
+      // if (!checkout_session_url) {
+      //   throw new Error("Invalid response from server: checkout_session_url not found");
+      // }
   
-      // Redirect to Stripe checkout using the checkout_session_url
-      window.location.href = checkout_session_url;
+      // // Redirect to Stripe checkout using the checkout_session_url
+      // window.location.href = checkout_session_url;
     } catch (error) {
       console.error("Error initiating checkout:", error);
     } finally {
@@ -83,6 +87,10 @@ const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
     }
   };
   
+  const handleShipping = () => {
+    // Here you can implement the logic to redirect to the shipping page
+    navigate('/Shipping');
+  };
 
   return (
     <div className="container mt-5">
@@ -149,6 +157,12 @@ const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
                 >
                   {loading ? "Processing..." : "Proceed to Checkout"}
                 </button>
+                <button
+                  className="btn btn-primary mx-2"
+                  onClick={handleShipping}
+                >
+                  Shipping
+                </button>
               </td>
             </tr>
           </tfoot>
@@ -159,6 +173,3 @@ const Cart = ({ cartItems, setCartItems, isAuthenticated }) => {
 };
 
 export default Cart;
-
-
-

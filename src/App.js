@@ -6,12 +6,15 @@ import ShopCategory from './pages/ShopCategory';
 import Product from './pages/Product';
 import LoginSignup from './pages/LoginSignup';
 import Cart from './pages/Cart';
-import About from './pages/About';
+import Checkout from './pages/Checkout';
+import Thanks from './pages/Thanks';
+import Professions from './pages/Professions';
 import Footer from './comps/footer/Footer';
 import Login from './pages/Login';
 import ProductDetails from './pages/ProductDetails';
 import {  useState } from 'react';
 import Logout from './pages/Logout';
+import ShippingDetails from './pages/Shipping';
 
 
 
@@ -46,13 +49,17 @@ function App() {
         <Route path='/' element={<Shop/>}/>
         <Route path='/categories' element={<ShopCategory onAddToCart={handleAddToCart}/>}/>
         <Route path='/deals' element={<Product onAddToCart={handleAddToCart}/>}/>
-        <Route path='/about' element={<About/>}/>
+        <Route path='/Professions' element={<Professions/>}/>
         <Route path='/product' element={<Product/>}/>
         <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems} onLogin={handleLogin}/>}/>
+        <Route path='/thank-you' element={<Thanks/>}/>
+        <Route path='/checkout' element={<Checkout cartItems={cartItems} setCartItems={setCartItems} isAuthenticated={isAuthenticated}/>}/> 
          <Route path='/login' element={<Login onLogin={handleLogin} isAuthenticated={isAuthenticated} cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path='/signup' element={<LoginSignup/>}/>
         <Route path='/logout' element={<Logout onLogout={handleLogout}/>}/>
         <Route path='/product/:id' element={<ProductDetails onAddToCart={handleAddToCart}/>}/>
+        {/* <Route path='/shipping' element={<ShippingDetails element={}/>}/> */}
+        
       </Routes>
       <Footer/>
       
