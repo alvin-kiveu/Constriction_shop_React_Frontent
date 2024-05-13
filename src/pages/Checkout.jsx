@@ -135,7 +135,7 @@ const Checkout = ({ cartItems, setCartItems, isAuthenticated }) => {
             // Clear the cart items
             setCartItems([]);
             // Redirect to the home page
-            navigate('/');
+            navigate('/thank-you');
         } else if(TransactionStatus === 'Failed'){
             // Payment failed
             console.log("Payment failed");
@@ -262,7 +262,10 @@ const Checkout = ({ cartItems, setCartItems, isAuthenticated }) => {
           <label className="form-label" style={{ marginTop: '12px', fontWeight: '600' }}>Payment Method</label>
          
         </div>
-        <div className="col-md-12 row d-flex flex-row"> {/* Changed flex-column to flex-row */}
+
+
+        <div className="col-md-12 row d-flex flex-row"> 
+
           <div  className="col-md-2 form-check d-flex flex-row" style={{ marginTop: '20px', borderRadius: '5px', border: '1px solid green',
                 boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff', padding: '2px',  marginRight: '20px' }}> {/* Added marginRight for spacing between payment methods */}
             <input 
@@ -302,8 +305,10 @@ const Checkout = ({ cartItems, setCartItems, isAuthenticated }) => {
               />
             </label>
           </div>
-          <div className="col-md-2 form-check d-flex flex-row" style={{ marginTop: '20px', display: 'none', borderRadius: '5px', border: '1px solid blue',
-                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff', padding: '2px',  marginRight: '20px' }}> {/* Added d-flex flex-row */}
+
+
+          {/* <div className="col-md-2 form-check d-flex flex-row" style={{ marginTop: '20px', display: 'none', borderRadius: '5px', border: '1px solid blue',
+                boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff', padding: '2px',  marginRight: '20px' }}>
             <input 
               className="form-check-input" 
               type="radio" 
@@ -328,7 +333,7 @@ const Checkout = ({ cartItems, setCartItems, isAuthenticated }) => {
                 marginBottom: '10px',  
                 padding: '10px', 
                 borderRadius: '5px', 
-                marginRight: '10px', // Added to create space between input and label
+                marginRight: '10px',
               }}
             >
               <img 
@@ -338,7 +343,10 @@ const Checkout = ({ cartItems, setCartItems, isAuthenticated }) => {
                 style={{  marginRight: '16px', width: '50px' }} 
               />
             </label>
-          </div>  
+          </div>   */}
+          
+          
+
        </div>
 
 
